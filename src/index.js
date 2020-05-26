@@ -4,6 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+import 'bootstrap/dist/css/bootstrap.css';
+
+
+import $ from 'jquery';
+import 'popper.js/dist/popper';
+// import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap';
+
+
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
