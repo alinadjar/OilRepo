@@ -3,7 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 // import $ from 'jquery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faBarcode, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import {
+  faPhone, faBarcode, faEnvelope, faShoppingBag, faShoppingCart, faShoppingBasket,
+  faTint, faFilter, faSmile, faCog, faWrench, faPhoneSquare, faAngleDoubleLeft, faChevronUp
+} from '@fortawesome/free-solid-svg-icons'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 const $ = window.$;
@@ -11,7 +14,7 @@ const $ = window.$;
 //Hide Loading Box (Preloader)
 function handlePreloader() {
   if ($('.preloader').length) {
-    $('.preloader').delay(2000).fadeOut(500);
+    $('.preloader').delay(700).fadeOut(500);
   }
 }
 
@@ -219,13 +222,15 @@ class App extends Component {
             <div class="auto-container">
               <div class="inner-container clearfix">
                 <div class="top-left">
-                  <ul class="clearfix d-none d-md-block" style={{ marginBottom: 0 }}>
-                    <li>Autocare is your one stap solution for all auto repair needs!</li>
-                    <li><a href="appointment.html">Get a Free Auto Checkup Now <i class="fa fa-long-arrow-alt-right"></i></a></li>
+                  <ul class="clearfix" style={{ marginBottom: 0 }}>
+                    <li>
+                      <p style={{ marginBottom: 0 }}>  051 - 37501  <FontAwesomeIcon icon={faPhoneSquare} size="lg" color={'#DDD'} /></p>
+                    </li>
+                    {/* <li><a href="appointment.html">Get a Free Auto Checkup Now <i class="fa fa-long-arrow-alt-right"></i></a></li> */}
                   </ul>
                 </div>
-                <div class="top-right clearfix">
-                  <p style={{ marginBottom: 0 }}><i class="fa fa-phone-volume"></i> 24/7 Support  0700 125 3657</p>
+                <div class="top-right clearfix  d-none d-md-block">
+                  <p style={{ marginBottom: 0, fontFamily: 'inherit' }}>پشتیبانی شبانه روزی</p>
                 </div>
               </div>
             </div>
@@ -233,29 +238,36 @@ class App extends Component {
           {/* <!-- End Header Top --> */}
 
           {/* <!-- Header Lower --> */}
-          <nav class="navbar navbar-expand-lg navbar-dark" style={{ position: 'relative', padding: 0 }}>
+          <nav class="navbar navbar-expand-md navbar-dark" style={{ position: 'relative', padding: '15px 0' }}>
             <a class="navbar-brand" href="#">
               <img src={require('./images/logo-2.png')}
                 style={{ position: 'absolute', top: 0, left: 0 }} />
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+              style={{ position: 'relative' }}>
               <span class="navbar-toggler-icon"></span>
+              <a href="shop.html" title="" style={{ position: 'absolute', left: '-50px', top: '20%' }}>
+                <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
+                <span className="badge badge-warning" style={{ position: 'absolute', top: '-10px', left: '18px', borderRadius: '50%' }}>74</span>
+              </a>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav" style={{ flexDirection: 'row', direction: 'rtl' }}>
-              <ul class="navbar-nav">
+              <ul class="navbar-nav" style={{ textAlign: 'right', paddingRight: '20px'}}>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>خانه <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
+                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>محصولات</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>تماس با ما</a>
                 </li>
                 <li class="nav-item">
-                  <a href="shop.html" title="">
-                    <i class="flaticon-shopping-bag-1"></i>
-                    <span class="count">2</span>
+                  <a class="nav-link" href="shop.html" title="" style={{ position: 'relative' }}>
+                    <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
+                    <span className="badge badge-warning" style={{ position: 'absolute', top: '-3px', right: '-5px', borderRadius: '50%' }}>4</span>
                   </a>
                 </li>
               </ul>
@@ -412,15 +424,15 @@ class App extends Component {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img className="d-block w-100" src={require('./images/main-slider/image-1.jpg')} alt="First slide"
-                  style={{ objectFit: 'cover', height: '500px' }} />
+                  style={{ objectFit: 'cover', height: '600px' }} />
               </div>
               <div className="carousel-item">
                 <img className="d-block w-100" src={require('./images/main-slider/image-2.jpg')} alt="Second slide"
-                  style={{ objectFit: 'cover', height: '500px' }} />
+                  style={{ objectFit: 'cover', height: '600px' }} />
               </div>
               <div className="carousel-item">
                 <img className="d-block w-100" src={require('./images/main-slider/image-3.jpg')} alt="Third slide"
-                  style={{ objectFit: 'cover', height: '500px' }} />
+                  style={{ objectFit: 'cover', height: '600px' }} />
               </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -435,21 +447,35 @@ class App extends Component {
         </section>
 
 
-        <div className='row' style={{
+        <div className='row flex-column-reverse flex-md-row' style={{
           margin: 0,
-          paddingBottom: '100px',
-          paddingTop: '80px',
+          paddingBottom: '5%',
+          paddingTop: '5%',
           marginTop: '-80px',
           position: 'relative',
           zIndex: 20,
           borderTopLeftRadius: '95px',
           borderTopRightRadius: '95px',
-          backgroundColor: '#c0ff00',
-          marginBottom: '50px'
+          backgroundColor: '#dac873',
+          marginBottom: '50px',
+          fontFamily: 'IRANSans',
+          boxShadow: '3px -5px 20px 0px #212121'
         }}>
-          <div className="col-md-4 col-sm-12">
+
+          <div className="col-md-6 col-sm-12" style={{ fontFamily: 'inherit', marginBottom: '20px' }}>
+            <div style={{ width: '80%', margin: '0 auto', fontFamily: 'inherit' }}>
+              <h3 style={{ fontFamily: 'inherit', textAlign: 'center' }}>انتخاب مدل</h3>
+              <select className="mselect2" id='si2' name="state" style={{ width: '100%' }}>
+                <option value="AL">سمند سورن</option>
+                <option value="WY">پارس </option>
+                <option value="OH">Ohio</option>
+                <option value="HA">Hamilton</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-md-6 col-sm-12" style={{ fontFamily: 'inherit', marginBottom: '20px' }}>
             <div style={{ width: '80%', margin: '0 auto' }}>
-              <h3>Plugin Select2</h3>
+              <h3 style={{ fontFamily: 'inherit', textAlign: 'center' }}>انتخاب برند</h3>
               <select className="mselect2" id='si1' name="state" style={{ width: '100%' }}>
                 <option value="AL">Alabama</option>
                 <option value="WY">Wyoming</option>
@@ -458,75 +484,62 @@ class App extends Component {
               </select>
             </div>
           </div>
-          <div className="col-md-4 col-sm-12">
-            <div style={{ width: '80%', margin: '0 auto' }}>
-              <h3>Plugin Select2</h3>
-              <select className="mselect2" id='si2' name="state" style={{ width: '100%' }}>
-                <option value="AL">Alabama</option>
-                <option value="WY">Wyoming</option>
-                <option value="OH">Ohio</option>
-                <option value="HA">Hamilton</option>
-              </select>
-            </div>
-          </div>
-          <div className="col-md-4 col-sm-12">
-            <div style={{ width: '80%', margin: '0 auto' }}>
-              <h3>Plugin Select2</h3>
-              <select className="mselect2" id='si3' name="state" style={{ width: '100%' }}>
-                <option value="AL">Alabama</option>
-                <option value="WY">Wyoming</option>
-                <option value="OH">Ohio</option>
-                <option value="HA">Hamilton</option>
-              </select>
-            </div>
-          </div>
         </div>
 
 
 
-        <div class="sec-title text-center" style={{ marginTop: '100px' }}>
-          <h2>Our Latest Works</h2>
-          <div class="separator"><span class="flaticon-settings-2"></span></div>
+        <div class="sec-title text-center" style={{ marginTop: '50px' }}>
+          <h2 style={{ fontFamily: 'inherit' }}>چاله سرویس</h2>
+          <div class="separator"><FontAwesomeIcon icon={faWrench} size="lg" color={'#DDD'}
+            style={{ fontSize: '2.5rem', }} /></div>
         </div>
 
 
         {/* <!-- Fact counter --> */}
-        <section class="fun-fact-two no-pd-top">
+        <section class="fun-fact-two no-pd-top wow fadeInLeft">
           <div class="auto-container">
             <div class="row clearfix">
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12">
-                <div class="inner-box">
-                  <span class="icon flaticon-boy-broad-smile"></span>
-                  <span class="count-text" data-speed="5000" data-stop="6370">0</span>
-                  <div class="counter-title"><h3>Happy Client</h3></div>
+              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpRight">
+                <div class="inner-box" style={{ overflow: 'hidden' }}>
+                  <FontAwesomeIcon icon={faTint} size="lg" color={'#DDD'}
+                    style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
+                  <span class="count-text" data-speed="5000" data-stop="6370"
+                    style={{ textAlign: 'center', fontSize: '2.7rem', color: '#002156' }}>0</span>
+                  <div class="counter-title"><h3>تعویض روغن</h3></div>
                 </div>
               </div>
 
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12">
-                <div class="inner-box">
-                  <span class="icon flaticon-transport"></span>
-                  <span class="count-text" data-speed="4500" data-stop="5504">0</span>
-                  <div class="counter-title"><h3>Service Done</h3></div>
+              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpRight">
+                <div class="inner-box" style={{ overflow: 'hidden' }}>
+                  <FontAwesomeIcon icon={faFilter} size="lg" color={'#DDD'}
+                    style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
+                  <span class="count-text" data-speed="4500" data-stop="5504"
+                    style={{ textAlign: 'center', fontSize: '2.7rem', color: '#002156' }}>0</span>
+                  <div class="counter-title"><h3>تعویض فیلتر</h3></div>
                 </div>
               </div>
 
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12">
-                <div class="inner-box">
-                  <span class="icon flaticon-avatar-1"></span>
-                  <span class="count-text" data-speed="3500" data-stop="3750">0</span>
-                  <div class="counter-title"><h3>Total Experts</h3></div>
+              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpLeft">
+                <div class="inner-box" style={{ overflow: 'hidden' }}>
+                  <FontAwesomeIcon icon={faCog} size="lg" color={'#DDD'}
+                    style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
+                  <span class="count-text" data-speed="3500" data-stop="3750"
+                    style={{ textAlign: 'center', fontSize: '2.7rem', color: '#002156' }}>0</span>
+                  <div class="counter-title"><h3>سرویس خودرو</h3></div>
                 </div>
               </div>
 
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12">
-                <div class="inner-box">
-                  <span class="icon flaticon-car-1"></span>
-                  <span class="count-text" data-speed="4000" data-stop="5420">0</span>
-                  <div class="counter-title"><h3>Total Service</h3></div>
+              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpLeft">
+                <div class="inner-box" style={{ overflow: 'hidden' }}>
+                  <FontAwesomeIcon icon={faSmile} size="lg" color={'#DDD'}
+                    style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
+                  <span class="count-text" data-speed="4000" data-stop="5420"
+                    style={{ textAlign: 'center', fontSize: '2.7rem', color: '#002156' }}>0</span>
+                  <div class="counter-title"><h3>رضایتمندی مشتریان</h3></div>
                 </div>
               </div>
             </div>
@@ -534,31 +547,39 @@ class App extends Component {
         </section>
         {/* <!-- End Fact counter --> */}
 
+        <div style={{ fontFamily: 'IRANSans', padding: '40px 0' }}>
+          <h2 style={{ fontFamily: 'inherit', textAlign: 'center' }}>روش ارائه سرویس</h2>
+          <h5 style={{ fontFamily: 'inherit', textAlign: 'center', direction: 'rtl', width: '90%', margin: '0 auto', lineHeight: 1.5 }}>
+            ارسال سفارش و ارائه سرویس در حال حاضر در شهر تهران امکان پذیر می باشد و ارسال سفارش های بالای یکصدهزار تومان رایگان می باشد. در صورت انتخاب گزینه سرویس "تعویض می خواهم" در زمان خرید هر محصول هیچ گونه هزینه ایاب و ذهاب یا هزینه اضافه تر از مبلغ درج شده در فاکتور دریافت نمی شود. پس از تایید سفارش سرویس، مشخصات تکنسین چاله سرویس از طریق ایمیل و پیامک برای مشتری ارسال می شود و در زمان مراجعه تکنسین به محل مورد نظر، وی ملزم به ارائه کارت شناسایی و معرفی خود می باشد. در صورت عدم ارائه کارت شناسایی و یا عدم تطابق مشخص، از شروع به کار تکنسین خودداری نموده و مراتب را به چاله سرویس اطلاع دهید. کلیه سفارش هایی که نیازمند ارائه سرویس می باشند و در ساعات غیر اداری ثبت گردند، حداقل یک روز پس از ثبت سفارش انجام می شوند. سفارش هایی که نیاز به سرویس ندارند امکان ارسال در همان روز را دارند. سرویس تعویض روغن شامل تست روغن رایگان می باشد.
+          </h5>
 
-        <div className='row' style={{ margin: 0, display: 'flex', justifyContent: 'flex-end', position: 'relative' }}>
-          <div style={{ width: '50%' }}>
-            <img src={require('./images/resource/car-image-2.png')} alt='' style={{ objectFit: 'cover' }} />
-          </div>
-          <div style={{ position: 'absolute', top: 0 }}>
-            <h2>Car Service Center</h2>
-            <p>Got long forms on your website ? Break them up into smaller logical sections and convert it into a multi-step form with a cool progress bar. Could work for lengthy processes like registration, checkout, profile fillups, 2-factor authentication logiGot long forms on your website ? Break them up into smaller logical sections and convert it into a multi-step form with a cool progress bar. Could work for lengthy processes like registration, checkout, profile fillups, 2-factor authentication logi</p>
+        </div>
+        <div class="parallax">
+          <div className='row' style={{ margin: 0, display: 'flex', justifyContent: 'flex-end', position: 'relative' }}>
+            <div style={{ width: '50%', paddingTop: '100px', objectFit: 'cover' }}>
+              <img src={require('./images/resource/car-image-2.png')} alt='' style={{ objectFit: 'cover', width: '100%' }} />
+            </div>
+            <div style={{ position: 'absolute', top: 0, left: '2%', paddingTop: '100px' }}>
+              <h2 style={{ fontFamily: 'IRANSans', }}>مرکز سرویس خودرو</h2>
+              <ul style={{ textAlign: 'center', lineHeight: '1.9', fontWeight: 'bold' }}>
+                <li>بهترین قیمت</li>
+                <li>سریع و مطمئن</li>
+                <li>پشتیبانی آنلاین</li>
+                <li>تعمیرکاران حرفه‌ای</li>
+              </ul>
+            </div>
           </div>
         </div>
-        {/* <!-- Main Footer --> */}
-        <footer class="main-footer" style={{}}>
-          <div class="auto-container">
 
+        {/* <!-- Main Footer --> */}
+        <footer class="main-footer">
+          <div class="auto-container">
             {/* <!--Widgets Section--> */}
             <div class="widgets-section">
               <div class="row clearfix">
                 {/* <!--Footer Column--> */}
-                <div class="footer-column col-md-3 col-sm-6 col-xs-12">
+                <div class="col-sm-4 col-12">
                   <div class="footer-widget about-widget">
-                    <div class="footer-logo">
-                      <figure>
-                        <a href="index.html"><img src="images/footer-logo.png" alt="" /></a>
-                      </figure>
-                    </div>
                     <div class="widget-content">
                       <div className='row'>
                         <div className='col-4'>
@@ -578,16 +599,17 @@ class App extends Component {
 
 
                 {/* <!--Footer Column--> */}
-                <div class="footer-column col-md-3 col-sm-6 col-xs-12">
-                  <div class="footer-widget services-widget">
-                    <h2 class="widget-title">Our Services</h2>
+                <div class="col-sm-4 col-6">
+                  <div class="footcolumn footer-widget services-widget">
+                    <h2 class="widget-title" style={{ textAlign: 'right', fontFamily: 'IRANSans', marginBottom: '40px' }}>خدمات ما</h2>
                     <div class="widget-content">
-                      <ul class="services-list">
-                        <li><a href="#">Engine Diagnostic & Repair</a></li>
-                        <li><a href="#">Maintanence Inspaection</a></li>
-                        <li><a href="#">Electrical System Diagnostic</a></li>
-                        <li><a href="#">Wheel Allignment & Installation</a></li>
-                        <li><a href="#">Air Conditioner Service & Repair</a></li>
+                      <ul class="services-list" style={{ direction: 'rtl', textAlign: 'right' }}>
+                        <li><FontAwesomeIcon icon={faAngleDoubleLeft} size="md" color={'#FFF'} /><a href="#">تعویض روغن</a></li>
+                        <li><FontAwesomeIcon icon={faAngleDoubleLeft} size="md" color={'#FFF'} /><a href="#">تعویض لنت ترمز</a></li>
+                        <li><FontAwesomeIcon icon={faAngleDoubleLeft} size="md" color={'#FFF'} /><a href="#">تعویض فیلتر</a></li>
+                        <li><FontAwesomeIcon icon={faAngleDoubleLeft} size="md" color={'#FFF'} /><a href="#">فلاشینگ موتور</a></li>
+                        <li><FontAwesomeIcon icon={faAngleDoubleLeft} size="md" color={'#FFF'} /><a href="#">عیب یابی</a></li>
+                        <li><FontAwesomeIcon icon={faAngleDoubleLeft} size="md" color={'#FFF'} /><a href="#">سرویس خودرو</a></li>
                       </ul>
                     </div>
                   </div>
@@ -595,10 +617,10 @@ class App extends Component {
 
 
                 {/* <!--Footer Column--> */}
-                <div class="footer-column col-md-3 col-sm-6 col-xs-12">
-                  <div class="footer-widget services-widget">
-                    <ul style={{ listStyle: 'none', textAlign: 'right', fontSize: '1rem' }}>
-                      <li>تماس با ما</li>
+                <div class="col-sm-4 col-6">
+                  <div class="footcolumn footer-widget services-widget">
+                    <h2 class="widget-title" style={{ textAlign: 'right', fontFamily: 'IRANSans', marginBottom: '40px' }}>تماس با ما</h2>
+                    <ul style={{ listStyle: 'none', textAlign: 'right', fontSize: '1rem', direction: 'rtl' }}>
                       <li>
                         <span> <FontAwesomeIcon icon={faMapMarkerAlt} size="sm" /> </span>
                         <span style={{ paddingRight: '1rem' }}>آدرس: مشهد، بهارستان 18</span>
@@ -620,11 +642,11 @@ class App extends Component {
                 </div>
 
                 {/* <!--Footer Column--> */}
-                <div class="footer-column col-md-3 col-sm-6 col-xs-12">
-                  {/* <!--Footer Column--> */}
+                {/* <div class="footer-column col-md-3 col-sm-6 col-xs-12">
+                  <!--Footer Column-->
                   <div class="footer-widget news-widget">
                     <h2 class="widget-title">Latest News</h2>
-                    {/* <!--Footer Column--> */}
+                    <!--Footer Column--> 
                     <div class="widget-content">
                       <div class="post">
                         <h4><a href="#">Get Usefull Car Maintanence Tips From Our Expets</a></h4>
@@ -637,18 +659,20 @@ class App extends Component {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
 
           <div style={{ borderTop: '2px solid #bbb', width: '80%', margin: '0 auto' }}></div>
-          <p style={{ textAlign: 'center', fontSize: '.8rem', marginTop: '.5rem' }}>&copy;Copyright 2020 - Tabarok Industrial Group Co.</p>
+          <p style={{ textAlign: 'center', fontSize: '.8rem', margin: 0 }}>&copy;Copyright 2020 - Tabarok Industrial Group Co.</p>
         </footer>
 
 
         {/* <!--Scroll to top--> */}
-        <div class="scroll-to-top scroll-to-target" data-target="html">HH<span class="icon fa fa-angle-double-up"></span></div>
+        <div class="scroll-to-top scroll-to-target" data-target="html">
+          <FontAwesomeIcon icon={faChevronUp} size="md" color={'#FFF'} />
+        </div>
 
 
 

@@ -17,6 +17,10 @@
 	background-color: rgba(255,0,94,0.5);
 }
 
+.nav-item{
+	padding-right: 15px !important;
+}
+
 /*** 
 
 ====================================================================
@@ -297,7 +301,7 @@ img{
 	text-align:center;
 	z-index:100;
 	cursor:pointer;
-	background:#353535;
+	background:#002156;
 	display:none;
 	-webkit-transition:all 300ms ease;
 	-ms-transition:all 300ms ease;
@@ -308,7 +312,7 @@ img{
 
 .scroll-to-top:hover{
 	color:#ffffff;
-	background:#fb4848;
+	background:#de5e8d;
 }
 
 /*** 
@@ -1077,7 +1081,7 @@ img{
 }
 
 .header-style-three .header-top{
-	background-color: #222222 !important;
+	background-color: #002156 !important;
 }
 
 .header-style-three .header-top .top-left{
@@ -1533,7 +1537,7 @@ button:focus{
 
 .main-footer .widgets-section{
 	position:relative;
-	padding:95px 0px 80px;
+	padding:95px 0px 30px;
 }
 
 .main-footer.alternate .widgets-section{
@@ -1569,10 +1573,10 @@ button:focus{
 	padding-bottom: 15px;
 }
 
-.main-footer .footer-column .widget-title:after{
+.main-footer .footcolumn .widget-title:after{
 	position: absolute;
-	left: 0;
-	bottom: 0;
+	right: 0;
+	bottom: -10px;
 	height: 2px;
 	width: 60px;
 	background-color: #aaaaaa;
@@ -1637,7 +1641,7 @@ button:focus{
 	display: inline-block;
 	font-size: 14px;
 	line-height: 20px;
-	padding-left: 35px;
+	padding-right: 10px;
 	color: #aaaaaa;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
@@ -1646,24 +1650,7 @@ button:focus{
 	transition: all 300ms ease;
 }
 
-.main-footer .services-list li a:before{
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-  	content: "\f101"; 
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	font-size: 14px;
-	line-height: 20px;
-	color: #aaaaaa;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-ms-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-	transition: all 300ms ease;
-}
+
 
 .main-footer .services-list li a:hover:before,
 .main-footer .services-list li a:hover{
@@ -1837,9 +1824,11 @@ button:focus{
 
 .fun-fact-two .count-box .inner-box{
 	position: relative;
-	background-color: #f8f8f8;
-	padding: 35px 35px;
+	background-color: #FFF;/* #f8f8f8;*/
+	padding: 35px 35px;	
+	border-radius: 20%;
 	min-height: 250px;
+	text-align: right;
 	-webkit-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
 	-moz-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
 	-ms-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
@@ -1884,8 +1873,9 @@ button:focus{
 	display: block;
 	font-size: 24px;
 	line-height: 1.2em;
-	color: #fb4848;
+	color: #002156;
 	font-weight: 500;
+	font-family: inherit;
 }
 
 .rtl .fun-fact-two .count-box .count-text:before,
@@ -1893,3 +1883,26 @@ button:focus{
 	right:0px;
 	left:auto;
 }
+
+
+
+/*======================*/
+/*    .parallax        */
+/*====================*/
+.parallax {
+	/* The image used */
+	background-image: url('./images/resource/oilSplash.png');
+  
+	/* Set a specific height */
+	min-height: 300px; 
+  
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	object-fit: cover;
+
+	box-shadow: inset 1px 90px 90px 0  rgba(248,249,250,1);
+  }
