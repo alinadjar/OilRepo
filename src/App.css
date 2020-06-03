@@ -13,52 +13,9 @@
 }
 
 
-
-
-/* Motor Expert - Auto Repair & Service HTML Template */
-
-/************ TABLE OF CONTENTS ***************
-1. Fonts
-2. Reset
-3. Global
-4. Main Header / Two / Three / Four
-5. Main Slider
-6. About Us
-7. Fun Fact Section / Two
-8. Feature Section
-9. Services Section
-10. Services Section Two
-11. Service Detail
-12. Why Us Section
-13. Gallery Section
-14. Project Section
-15. Project Detail Section
-16. Video And Faq's
-17. News Section
-18. Team Section
-19. Testimonial Section / Two 
-20. Testimonial And BLog
-21. Blog Detail
-22. Styled Pagination
-23. Team Page Section
-24. Pricing Section
-25. Appointment Form Section
-26. Appointment Page Style
-27. Contact Section
-28. Contact Map Section
-29. Contact Info Section
-30. Clients Section
-31. Main Footer
-32. Sidebar Page Container
-33. Error Page
-34. Shop Page Section
-35. Shop Details
-36. CheckOut Section
-37. Cart Section
-38. Login Section
-39. coming Soon
-
-**********************************************/
+.navbar {
+	background-color: rgba(255,0,94,0.5);
+}
 
 /*** 
 
@@ -162,66 +119,6 @@ ul,li{
 	float:right;
 }
 
-/*List Style One*/
-
-.list-style-one{
-	position:relative;
-}
-
-.list-style-one li{
-	position:relative;
-	font-size:14px;
-	line-height: 22px;
-	font-weight:400;
-	padding-left:40px;
-	color:#666666;
-	margin-bottom: 20px;
-}
-
-.list-style-one li:before{
-	position:absolute;
-	content:'\f00c';
-	left:0px;
-	top:3px;
-	color:#fb4848;
-	font-size:15px;
-	font-weight: 900;
-	line-height: 22px;
-	font-family: 'Font Awesome 5 Free';
-}
-
-/*List Style Two*/
-
-.list-style-two{
-	position:relative;
-}
-
-.list-style-two li{
-	position:relative;
-	font-size:16px;
-	font-weight:400;
-	padding-left:70px;
-	margin-bottom:40px;
-	color:#777777;
-}
-
-.list-style-two li .icon{
-	position:absolute;
-	left:0px;
-	top:3px;
-	width:40px;
-	color:#fb4848;
-	font-size:42px;
-	line-height:1em;
-	text-align:center;
-}
-
-.list-style-two li strong{
-	font-size:20px;
-	color:#36404b;
-	font-weight:700;
-	display:block;
-}
 
 /* List Style Three */
 
@@ -1120,7 +1017,7 @@ img{
 .main-menu .navbar-header .navbar-toggler{
 	color: #ffffff;
 	font-size: 18px;
-	border: 2px solid #ffffff;
+	border: 2px solid #6d6c6c;
 	border-radius: 0px;
 	opacity: 1;
 	width: 50px;
@@ -1130,12 +1027,25 @@ img{
 .main-menu .navbar-header .navbar-toggler .icon-bar{
 		width: 28px;
 	height: 2px;
-	background-color: #ffffff;
+	background-color: #6d6c6c;
 	position: relative;
 	display: block;
 	padding: 0px;
 	margin: 5px 0px;
 }
+
+@media(max-width: 500px) {
+	.sticky-header btn.navbar-toggler {
+		display: none;
+	}
+}
+
+@media(min-width: 510px) {
+	.sticky-header btn.navbar-toggler {
+		display: block;
+	}
+}
+
 
 /*======================================
 			 Header Style Three
@@ -1897,4 +1807,89 @@ button:focus{
 
 .footer-bottom .copyright-text a:hover{
 	text-decoration: underline;
+}
+
+
+
+
+
+/*** 
+
+====================================================================
+				Fun Fact Two								
+====================================================================
+
+***/
+
+.fun-fact-two{
+	position: relative;
+	padding: 120px 0 70px;
+}
+
+.fun-fact-two.no-pd-top{
+	padding-top: 0;
+}
+
+.fun-fact-two .count-box{
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.fun-fact-two .count-box .inner-box{
+	position: relative;
+	background-color: #f8f8f8;
+	padding: 35px 35px;
+	min-height: 250px;
+	-webkit-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
+	-moz-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
+	-ms-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
+	-o-box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
+	box-shadow: 6px 12px 10px 0 rgba(0,0,0,.17);
+}
+
+.fun-fact-two .count-box .icon{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	text-align: right;
+	font-size: 130px;
+	line-height: 1em;
+	color: #e2e2e2;
+	font-weight: 400;
+}
+
+.fun-fact-two .count-box .count-text{
+	position: relative;
+	display: block;
+	font-size: 48px;
+	line-height: 1em;
+	color: #fb4848;
+	font-weight: 700;
+	padding-bottom: 20px;
+	margin-bottom: 25px;
+}
+
+.fun-fact-two .count-box .count-text:before{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 2px;
+	width: 60px;
+	background-color: #222222;
+	content: "";
+}
+
+.fun-fact-two .count-box .counter-title h3{
+	position: relative;
+	display: block;
+	font-size: 24px;
+	line-height: 1.2em;
+	color: #fb4848;
+	font-weight: 500;
+}
+
+.rtl .fun-fact-two .count-box .count-text:before,
+.rtl .contact-info ul li .icon{
+	right:0px;
+	left:auto;
 }
