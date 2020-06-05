@@ -1,0 +1,11 @@
+.spanDiscountModal {
+    font-family: 'IRANSans', sans-serif;
+    font-size: 0.7em;
+    background-color: #1baf19;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    left: 55%;
+    bottom: 40%;
+    color: #FFF;
+}

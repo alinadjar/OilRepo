@@ -228,7 +228,7 @@ class App extends Component {
           paddingTop: '5%',
           marginTop: '-80px',
           position: 'relative',
-          zIndex: 20,
+          zIndex: 16,
           borderTopLeftRadius: '95px',
           borderTopRightRadius: '95px',
           backgroundColor: '#dac873',
@@ -276,7 +276,7 @@ class App extends Component {
           <div class="auto-container">
             <div class="row clearfix">
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpRight">
+              <div class="count-box col-lg-3 col-md-4 col-sm-6 col-xs-12 wow rotateInUpRight">
                 <div class="inner-box" style={{ overflow: 'hidden' }}>
                   <FontAwesomeIcon icon={faTint} size="lg" color={'#DDD'}
                     style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
@@ -287,7 +287,7 @@ class App extends Component {
               </div>
 
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpRight">
+              <div class="count-box col-lg-3 col-md-4 col-sm-6 col-xs-12 wow rotateInUpRight">
                 <div class="inner-box" style={{ overflow: 'hidden' }}>
                   <FontAwesomeIcon icon={faFilter} size="lg" color={'#DDD'}
                     style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
@@ -298,7 +298,7 @@ class App extends Component {
               </div>
 
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpLeft">
+              <div class="count-box col-lg-3 col-md-4 col-sm-6 col-xs-12 wow rotateInUpLeft">
                 <div class="inner-box" style={{ overflow: 'hidden' }}>
                   <FontAwesomeIcon icon={faCog} size="lg" color={'#DDD'}
                     style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />
@@ -309,7 +309,7 @@ class App extends Component {
               </div>
 
               {/* <!-- Count box --> */}
-              <div class="count-box col-lg-3 col-md-6 col-sm-12 wow rotateInUpLeft">
+              <div class="count-box col-lg-3 col-md-4 col-sm-6 col-xs-12 wow rotateInUpLeft">
                 <div class="inner-box" style={{ overflow: 'hidden' }}>
                   <FontAwesomeIcon icon={faSmile} size="lg" color={'#DDD'}
                     style={{ fontSize: '5.2rem', position: 'absolute', right: 0, bottom: 0 }} />

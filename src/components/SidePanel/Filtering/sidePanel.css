@@ -1,0 +1,33 @@
+
+.sidePanel54f{
+    width: 450px;
+    max-width: 95%;
+    transition: margin .5s ease-in;
+    margin: 0 -450px 0 0;
+    background-color: rgba(247, 247, 247, 0.95);
+
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.sidePanel54f.isOpen{
+    margin-right: 0;
+}
+
+.backSidePanel54f{
+    z-index: 400;
+    opacity: 0;
+    width: 0;
+    transition: opacity .5s;
+}
+
+.backSidePanel54f.isOpen{
+    opacity: 1;
+    width: 100%;
+}
+
+/* body{
+    scrollbar-width: thin;     
+  scrollbar-color: blue orange;
+} */

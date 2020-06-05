@@ -1,118 +1,126 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    faShoppingCart, faPhoneSquare,
+  faShoppingCart, faPhoneSquare,
 } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
+import { toggleLoadingState, toggleBasketSidePanel } from '../../iRedux/Actions/common';
 
 const $ = window.$;
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+
+  componentDidMount() {
+
+    //Submenu Dropdown Toggle
+    if ($('.main-header .navigation > li.dropdown ul').length) {
+      $('.main-header .navigation > li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
+
+      //Dropdown Button
+      $('.main-header .navigation li.dropdown .dropdown-btn').on('click', function () {
+        $(this).prev('ul').slideToggle(500);
+      });
+
+      //Megamenu Toggle
+      $('.main-header .main-menu li.dropdown .dropdown-btn').on('click', function () {
+        $(this).prev('.mega-menu').slideToggle(500);
+      });
+
+      //Disable dropdown parent link
+      $('.navigation li.dropdown > a').on('click', function (e) {
+        e.preventDefault();
+      });
     }
 
 
-    componentDidMount() {
-
-        //Submenu Dropdown Toggle
-        if ($('.main-header .navigation > li.dropdown ul').length) {
-            $('.main-header .navigation > li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
-
-            //Dropdown Button
-            $('.main-header .navigation li.dropdown .dropdown-btn').on('click', function () {
-                $(this).prev('ul').slideToggle(500);
-            });
-
-            //Megamenu Toggle
-            $('.main-header .main-menu li.dropdown .dropdown-btn').on('click', function () {
-                $(this).prev('.mega-menu').slideToggle(500);
-            });
-
-            //Disable dropdown parent link
-            $('.navigation li.dropdown > a').on('click', function (e) {
-                e.preventDefault();
-            });
-        }
-
-
-        //Open Main Menu
-        if ($('.main-header-bar .nav-toggler .toggler-btn').length) {
-            $('.main-header-bar .nav-toggler .toggler-btn').on('click', function (e) {
-                e.preventDefault();
-                $(this).toggleClass('active');
-                $('.main-nav-outer').toggleClass('now-visible');
-            });
-        }
+    //Open Main Menu
+    if ($('.main-header-bar .nav-toggler .toggler-btn').length) {
+      $('.main-header-bar .nav-toggler .toggler-btn').on('click', function (e) {
+        e.preventDefault();
+        $(this).toggleClass('active');
+        $('.main-nav-outer').toggleClass('now-visible');
+      });
     }
+  }
 
 
 
-    render() {
-        return (
-            <>
-                <header class="main-header header-style-three" style={{ position: 'fixed' }}>
+  render() {
+    return (
+      <>
+        <header class="main-header header-style-three" style={{ position: 'fixed' , zIndex: 17}}>
 
-                    {/* <!--Header Top--> */}
-                    <div class="header-top">
-                        <div class="auto-container">
-                            <div class="inner-container clearfix">
-                                <div class="top-left">
-                                    <ul class="clearfix" style={{ marginBottom: 0 }}>
-                                        <li>
-                                            <p style={{ marginBottom: 0 }}>  051 - 37501  <FontAwesomeIcon icon={faPhoneSquare} size="lg" color={'#DDD'} /></p>
-                                        </li>
-                                        {/* <li><a href="appointment.html">Get a Free Auto Checkup Now <i class="fa fa-long-arrow-alt-right"></i></a></li> */}
-                                    </ul>
-                                </div>
-                                <div class="top-right clearfix  d-none d-md-block">
-                                    <p style={{ marginBottom: 0, fontFamily: 'inherit' }}>پشتیبانی شبانه روزی</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <!-- End Header Top --> */}
+          {/* <!--Header Top--> */}
+          <div class="header-top">
+            <div class="auto-container">
+              <div class="inner-container clearfix">
+                <div class="top-left">
+                  <ul class="clearfix" style={{ marginBottom: 0 }}>
+                    <li>
+                      <p style={{ marginBottom: 0 }}>  051 - 37501  <FontAwesomeIcon icon={faPhoneSquare} size="lg" color={'#DDD'} /></p>
+                    </li>
+                    {/* <li><a href="appointment.html">Get a Free Auto Checkup Now <i class="fa fa-long-arrow-alt-right"></i></a></li> */}
+                  </ul>
+                </div>
+                <div class="top-right clearfix  d-none d-md-block">
+                  <p style={{ marginBottom: 0, fontFamily: 'inherit' }}>پشتیبانی شبانه روزی</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <!-- End Header Top --> */}
 
-                    {/* <!-- Header Lower --> */}
-                    <nav class="navbar navbar-expand-md navbar-dark" style={{ position: 'relative', padding: '15px 0' }}>
-                        <a class="navbar-brand" href="#">
-                            <img src={require('../../images/logo-2.png')}
-                                style={{ position: 'absolute', top: 0, left: 0 }} />
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                            style={{ position: 'relative' }}>
-                            <span class="navbar-toggler-icon"></span>
-                            <a href="shop.html" title="" style={{ position: 'absolute', left: '-50px', top: '20%' }}>
-                                <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
-                                <span className="badge badge-warning" style={{ position: 'absolute', top: '-10px', left: '18px', borderRadius: '50%' }}>74</span>
-                            </a>
-                        </button>
+          {/* <!-- Header Lower --> */}
+          <nav class="navbar navbar-expand-md navbar-dark" style={{ position: 'relative', padding: '15px 0' }}>
+            <a class="navbar-brand" href="#">
+              <img src={require('../../images/logo-2.png')}
+                style={{ position: 'absolute', top: 0, left: 0 }} />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+              style={{ position: 'relative' }}>
+              <span class="navbar-toggler-icon"></span>
+              <div style={{ position: 'absolute', left: '-50px', top: '20%' }}
+              onClick={() => this.props.toggleBasketSidePanel()}>
+                <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
+                <span className="badge badge-warning" style={{ position: 'absolute', top: '-10px', left: '18px', borderRadius: '50%' }}>
+                  {this.props.cartItemsCount}
+                </span>
+              </div>
+            </button>
 
-                        <div class="collapse navbar-collapse" id="navbarNav" style={{ flexDirection: 'row', direction: 'rtl' }}>
-                            <ul class="navbar-nav" style={{ textAlign: 'right', paddingRight: '20px' }}>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>خانه <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>محصولات</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>تماس با ما</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="shop.html" title="" style={{ position: 'relative' }}>
-                                        <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
-                                        <span className="badge badge-warning" style={{ position: 'absolute', top: '-3px', right: '-5px', borderRadius: '50%' }}>4</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    {/* <!-- End Header Lower --> */}
+            <div class="collapse navbar-collapse" id="navbarNav" style={{ flexDirection: 'row', direction: 'rtl' }}>
+              <ul class="navbar-nav" style={{ textAlign: 'right', paddingRight: '20px' }}>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>خانه <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to='/products' style={{ fontSize: '1.3rem' }}>محصولات</Link>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>تماس با ما</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  style={{ position: 'relative' }} onClick={() => this.props.toggleBasketSidePanel()}>
+                    <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
+                    <span className="badge badge-warning" style={{ position: 'absolute', top: '-3px', right: '-5px', borderRadius: '50%' }}>
+                      {this.props.cartItemsCount}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          {/* <!-- End Header Lower --> */}
 
-                    {/* <!--Sticky Header--> */}
-                    {/* <div class="sticky-header">
+          {/* <!--Sticky Header--> */}
+          {/* <div class="sticky-header">
   <div class="auto-container clearfix">
      <!--Logo--> 
     <div class="logo pull-left">
@@ -246,13 +254,20 @@ class Header extends Component {
 
   </div>
 </div> */}
-                    {/*<!--End Sticky Header--> */}
-                </header>
-                {/* <!--End Main Header --> */}
+          {/*<!--End Sticky Header--> */}
+        </header>
+        {/* <!--End Main Header --> */}
 
-            </>
-        );
-    }
+      </>
+    );
+  }
 }
 
-export default Header;
+const mapStateToProps = (store) => ({
+  cartItemsCount: store.cart.cartItems
+})
+const mapDispatchToProps = {
+  toggleLoading: toggleLoadingState,
+  toggleBasketSidePanel
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

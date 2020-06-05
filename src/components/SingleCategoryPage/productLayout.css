@@ -1,0 +1,163 @@
+.productCapsule {
+    /* height: 400px; */
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.productCapsule button {
+    background: none; 
+    border: none;
+    width: 20px;
+}
+
+
+/*------------------------------------------------------------*/
+.catp74 {
+    margin: 0 auto;
+}
+
+.prodcat343 {
+    border: 1px solid #EEE;
+}
+
+@media (max-width: 576px) {
+    .catp74 {
+        width: 185px;
+    }
+    .catp74 img {
+        object-fit: 'fill';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 576px) {
+    .catp74 {
+        width: 180px;
+    }
+    .catp74 img {
+        object-fit: 'fill';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .catp74 {
+        width: 170px;
+    }
+    .catp74 img {
+        object-fit: 'cover';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .catp74 {
+        width: 165px;
+        /* border: 5px solid red;
+    margin: 100px; */
+    }
+    .catp74 img {
+        object-fit: 'cover';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .catp74 {
+        width: 160px;
+    }
+    .catp74 img {
+        object-fit: 'cover';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 1500px) {
+    .catp74 {
+        width: 146px;
+    }
+    .catp74 img {
+        object-fit: 'cover';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+.productCapsule h4 {
+    color: #5d6065 !important;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #5d6065;
+}
+
+.productCapsule small {
+    color: #5d6065 !important;
+    text-decoration: line-through;
+}
+
+.productCapsule span.spanDiscount {
+    font-family: 'IRANSans', sans-serif;
+    font-size: 0.7em;
+    background-color: #1baf19;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    right: 8%;
+    bottom: 20%;
+    color: #FFF;
+}
+
+.productCapsule div.bWrapper {
+    padding: 0 15px
+}
+
+.productCapsule div.bWrapper b {
+    font-family: inherit;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #333;
+    padding: 2rem 0px 1rem;
+    direction: rtl;
+}
+
+.catp74 a {
+    font-family: IRANSans;
+    font-size: 1.2em;
+}
+
+.catp74 > span {
+    border: 2px solid #28a745 !important;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+/*----------------------------------*/
+
+.sideCat h4{
+    font-family: 'IRANSans';
+}
+
+.row h5{
+    font-family: 'IRANSans';
+    padding-left: 10px;
+}
+
+
+.filterDiv {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+    /* border: 1px solid #DDD; */
+    padding: 5px;
+}
