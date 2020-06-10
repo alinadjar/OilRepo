@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import { toggleLoadingState, toggleBasketSidePanel } from '../../iRedux/Actions/common';
+import ToggleLink from './ToggleLink';
 
 const $ = window.$;
 
@@ -52,6 +53,8 @@ class Header extends Component {
 
 
   render() {
+
+
     return (
       <>
         <header class="main-header header-style-three" style={{ position: 'fixed' , zIndex: 17}}>
@@ -97,15 +100,18 @@ class Header extends Component {
 
             <div class="collapse navbar-collapse" id="navbarNav" style={{ flexDirection: 'row', direction: 'rtl' }}>
               <ul class="navbar-nav" style={{ textAlign: 'right', paddingRight: '20px' }}>
-                <li class="nav-item active">
-                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>خانه <span class="sr-only">(current)</span></a>
+                {/* <li class="nav-item active">
+                  <Link class="nav-link" to='/' style={{ fontSize: '1.3rem' }}>خانه <span class="sr-only">(current)</span></Link>
                 </li>
                 <li class="nav-item">
                   <Link className="nav-link" to='/products' style={{ fontSize: '1.3rem' }}>محصولات</Link>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" style={{ fontSize: '1.3rem' }}>تماس با ما</a>
-                </li>
+                </li> */}
+                <ToggleLink to='/'>خانه</ToggleLink>
+                <ToggleLink to='/products'>محصولات</ToggleLink>
+                <ToggleLink to='/contactus'>تماس با ما</ToggleLink>
+                {/* <li class="nav-item">
+                  <Link class="nav-link" to='/contactus' style={{ fontSize: '1.3rem' }}>تماس با ما</Link>
+                </li> */}
                 <li class="nav-item">
                   <a class="nav-link"  style={{ position: 'relative' }} onClick={() => this.props.toggleBasketSidePanel()}>
                     <FontAwesomeIcon icon={faShoppingCart} size="lg" color={'#FFF'} />
