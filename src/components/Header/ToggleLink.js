@@ -14,7 +14,7 @@ class ToggleLink extends Component {
                     const baseClass = this.props.className || '';
                     const activeClass = this.props.activeClass || 'active';
                     const inActiveClass = this.props.activeClass || '';
-                    debugger
+                    // debugger
                     const combinedClass = `${baseClass} ${routeProps.match.path === this.props.to ? activeClass : inActiveClass}`;
 
                     return <li className={`nav-item  ${combinedClass}`}>

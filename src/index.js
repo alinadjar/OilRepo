@@ -14,7 +14,7 @@ import 'popper.js/dist/popper';
 import 'bootstrap/dist/js/bootstrap';
 
 
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { PersistGate } from 'redux-persist/integration/react'
 import store, {persistor} from './iRedux';
 import Layout from './components/Layout';
@@ -32,12 +32,12 @@ ReactDOM.render(
           <Layout>
             <Switch>
               <Route path="/" exact={true} component={App} />
-              <Route path="/products" exact={true} component={ProductsPage} />
-              <Route path='/contactus' component={ContactUs} />
+              <Route path="/products"  component={ProductsPage} />
+              <Route path='/contactus'  component={ContactUs} />
               {/* <Route path='/categories/:catID?' exact={true} component={CategoryPage} /> */}
               {/* <Route path='/checkout' component={Checkout} /> */}
               <Route path='/products/category/:catID'  exact={true} component={SingleCategoryPage}/>
-              <Redirect to="/products" from='/products/category/:catID' />              
+              {/* <Redirect to="/products" from='/products/category/:catID' />               */}
               <Redirect to="/" />
             </Switch>
           </Layout>

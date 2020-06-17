@@ -6,7 +6,7 @@ import { setTextForToast } from '../../iRedux/Actions/common';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faAngleLeft
+    faAngleLeft
 } from '@fortawesome/free-solid-svg-icons'
 
 import ProductBox from './ProductBox';
@@ -17,6 +17,7 @@ import 'flickity/dist/flickity.pkgd';
 import 'flickity/css/flickity.css';
 
 import './productPage.css';
+import './radiosStyle.css';
 import ProductModal from '../Common/ProductModal';
 
 import { toastr } from 'react-redux-toastr'
@@ -25,6 +26,9 @@ import Footer from '../Footer';
 
 import { loadData } from '../../iRedux/Actions/shop_Actions';
 import { DataTypes } from '../../iRedux/Actions/types';
+
+const $ = window.$;
+
 
 class ProductPage extends Component {
     constructor(props) {
@@ -37,6 +41,8 @@ class ProductPage extends Component {
 
 
     componentDidMount() {
+
+        this.handlePreloader();
 
         const carousels = document.querySelectorAll('.myCarousel');
         carousels.forEach(carousel => {
@@ -137,23 +143,94 @@ class ProductPage extends Component {
         this.setState({ showProductModal: false, selectedProduct: null });
     }
 
+
+    handlePreloader() {
+        $('.preloader').fadeIn(2);
+        if ($('.preloader').length) {
+          $('.preloader').delay(700).fadeOut(500);
+        }
+      }
+
     render() {
 
 
         return (
             <>
                 <div>
-
+                <div className='preloader'></div>
 
                     <Header />
 
+                    <section className='' style={{ marginTop: '150px', marginLeft: 0, marginRight: 0 }}>
+
+                        <div className="myCarousel">
+
+                            <div className="carousel-cellTopCat" >
+                                <div className="form-check radioWrapperTopCat">
+                                    <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
+                                    <label className="form-check-label" for="exampleRadios1">
+                                    همه موارد
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="carousel-cellTopCat" >
+                                <div className="form-check radioWrapperTopCat">
+                                    <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios2" value="option1" />
+                                    <label className="form-check-label" for="exampleRadios2">
+                                       تعویض روغن
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="carousel-cellTopCat" >
+                                <div className="form-check radioWrapperTopCat">
+                                    <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios3" value="option1" />
+                                    <label className="form-check-label" for="exampleRadios3">
+                                        لنت ترمز
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="carousel-cellTopCat" >
+                                <div className="form-check radioWrapperTopCat">
+                                    <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios4" value="option1" />
+                                    <label className="form-check-label" for="exampleRadios4">
+                                        باتری
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="carousel-cellTopCat" >
+                                <div className="form-check radioWrapperTopCat">
+                                    <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios5" value="option1" />
+                                    <label className="form-check-label" for="exampleRadios5">
+                                        عیب یابی
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="carousel-cellTopCat" >
+                                <div className="form-check radioWrapperTopCat">
+                                    <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios6" value="option1" />
+                                    <label className="form-check-label" for="exampleRadios6">
+                                       ضدیخ
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                    </section>
+
                     <section style={{
                         boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
-                        background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)', 
-                        borderRadius: '8px', marginTop: '150px', 
+                        background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
+                        borderRadius: '8px',
                     }}>
+
+
                         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 2%' }}>
-                            <div><Link to='/products/category/1' style={{ color: '#007bFF', fontFamily: 'IRANSans' , fontSize: '1.1rem', }}><FontAwesomeIcon icon={faAngleLeft} size="md" style={{color: '#007bFF',}} /> <span>مشاهده همه</span></Link></div>
+                            <div><Link to='/products/category/1' style={{ color: '#007bFF', fontFamily: 'IRANSans', fontSize: '1.1rem', }}><FontAwesomeIcon icon={faAngleLeft} size="md" style={{ color: '#007bFF', }} /> <span>مشاهده همه</span></Link></div>
                             <h3><a href='/' style={{ fontSize: '1.8rem', color: '#444', fontFamily: 'IRANSans' }}> روغن</a></h3>
                         </div>
 
@@ -176,8 +253,8 @@ class ProductPage extends Component {
                         background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)', borderRadius: '8px',
                     }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 2%' }}>
-                        <div><Link to='/products/category/2' style={{ color: '#007bFF', fontFamily: 'IRANSans' , fontSize: '1.1rem', }}><FontAwesomeIcon icon={faAngleLeft} size="md" style={{color: '#007bFF',}} /> <span>مشاهده همه</span></Link></div>
-                            <h3><a href='/' style={{ fontSize: '1.8rem', color: '#444', fontFamily: 'IRANSans'  }}> فیلتر</a></h3>
+                            <div><Link to='/products/category/2' style={{ color: '#007bFF', fontFamily: 'IRANSans', fontSize: '1.1rem', }}><FontAwesomeIcon icon={faAngleLeft} size="md" style={{ color: '#007bFF', }} /> <span>مشاهده همه</span></Link></div>
+                            <h3><a href='/' style={{ fontSize: '1.8rem', color: '#444', fontFamily: 'IRANSans' }}> فیلتر</a></h3>
                         </div>
                         <div className="myCarousel">
                             {
@@ -203,8 +280,8 @@ class ProductPage extends Component {
                         background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)', borderRadius: '8px',
                     }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 2%' }}>
-                        <div><Link to='/products/category/3' style={{ color: '#007bFF', fontFamily: 'IRANSans' , fontSize: '1.1rem', }}><FontAwesomeIcon icon={faAngleLeft} size="md" style={{color: '#007bFF',}} /> <span>مشاهده همه</span></Link></div>
-                            <h3><a href='/' style={{ fontSize: '1.8rem', color: '#444', fontFamily: 'IRANSans'  }}> باتری</a></h3>
+                            <div><Link to='/products/category/3' style={{ color: '#007bFF', fontFamily: 'IRANSans', fontSize: '1.1rem', }}><FontAwesomeIcon icon={faAngleLeft} size="md" style={{ color: '#007bFF', }} /> <span>مشاهده همه</span></Link></div>
+                            <h3><a href='/' style={{ fontSize: '1.8rem', color: '#444', fontFamily: 'IRANSans' }}> باتری</a></h3>
                         </div>
                         <div className="myCarousel">
                             {

@@ -14,11 +14,11 @@ import Footer from './components/Footer';
 const $ = window.$;
 
 //Hide Loading Box (Preloader)
-function handlePreloader() {
-  if ($('.preloader').length) {
-    $('.preloader').delay(700).fadeOut(500);
-  }
-}
+// function handlePreloader() {
+//   if ($('.preloader').length) {
+//     $('.preloader').delay(700).fadeOut(500);
+//   }
+// }
 
 //Update Header Style and Scroll to Top
 function headerStyle() {
@@ -62,7 +62,12 @@ class App extends Component {
 
 
 
+
+
   componentDidMount() {
+
+    debugger;
+    this.handlePreloader();
 
 
     $('#si1').on('change', function (e) {
@@ -90,10 +95,10 @@ class App extends Component {
       //allowClear: true
     });
 
-    $(window).on('load', function () {
-      handlePreloader();
-      // fixedNavStyle();
-    });
+    // $(window).on('load', function () {
+    //   handlePreloader();
+    //   // fixedNavStyle();
+    // });
 
     $(window).on('scroll', function () {
       headerStyle();
@@ -171,6 +176,14 @@ class App extends Component {
     // }
 
 
+  }
+
+
+  handlePreloader() {
+    $('.preloader').fadeIn(2);
+    if ($('.preloader').length) {
+      $('.preloader').delay(700).fadeOut(500);
+    }
   }
 
 

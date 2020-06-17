@@ -5,9 +5,14 @@ import SidePanelFilter from '../SidePanel/Filtering';
 import SortingPanel from '../SidePanel/Sorting';
 import { connect } from 'react-redux';
 
+
 import './loader.css';
 
 import ReduxToastr from 'react-redux-toastr'
+
+
+
+
 
 class Layout extends Component {
     constructor(props) {
@@ -15,9 +20,14 @@ class Layout extends Component {
         this.state = {}
     }
 
+
+
+
+
     render() {
         return (
             <React.Fragment>
+                
                 {this.props.children}
 
 
