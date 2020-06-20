@@ -57,21 +57,21 @@ class Header extends Component {
 
     return (
       <>
-        <header class="main-header header-style-three" style={{ position: 'fixed' , zIndex: 17}}>
+        <header class="main-header header-style-three" style={{ position: 'fixed' , zIndex: 9000}}>
 
           {/* <!--Header Top--> */}
-          <div class="header-top">
-            <div class="auto-container">
-              <div class="inner-container clearfix">
-                <div class="top-left">
-                  <ul class="clearfix" style={{ marginBottom: 0 }}>
+          <div className="header-top">
+            <div className="auto-container">
+              <div className="inner-container clearfix">
+                <div className="top-left">
+                  <ul className="clearfix" style={{ marginBottom: 0 }}>
                     <li>
                       <p style={{ marginBottom: 0 }}>  051 - 37501  <FontAwesomeIcon icon={faPhoneSquare} size="lg" color={'#DDD'} /></p>
                     </li>
                     {/* <li><a href="appointment.html">Get a Free Auto Checkup Now <i class="fa fa-long-arrow-alt-right"></i></a></li> */}
                   </ul>
                 </div>
-                <div class="top-right clearfix  d-none d-md-block">
+                <div className="top-right clearfix  d-none d-md-block">
                   <p style={{ marginBottom: 0, fontFamily: 'inherit' }}>پشتیبانی شبانه روزی</p>
                 </div>
               </div>

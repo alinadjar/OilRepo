@@ -8,8 +8,11 @@ import {
   faTint, faFilter, faSmile, faCog, faWrench, faPhoneSquare, faAngleDoubleLeft, faChevronUp
 } from '@fortawesome/free-solid-svg-icons'
 
+
+import {setCurrentModel} from './iRedux/Actions/common';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { connect } from 'react-redux';
 
 const $ = window.$;
 
@@ -66,8 +69,9 @@ class App extends Component {
 
   componentDidMount() {
 
-    debugger;
+    // debugger;
     this.handlePreloader();
+
 
 
     $('#si1').on('change', function (e) {
@@ -79,7 +83,7 @@ class App extends Component {
     $('#si2').on('change', function (e) {
       console.log("value changed");
       alert(e.target.value);
-      console.log(e.target);
+      console.log(e.target.value);
     });
 
     $('#si3').on('change', function (e) {
@@ -218,7 +222,7 @@ class App extends Component {
               <div className="carousel-item">
                 <img className="d-block w-100" src={require('./images/main-slider/image-3.jpg')} alt="Third slide"
                   style={{ objectFit: 'cover', height: '600px' }} />
-              </div>              
+              </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -254,10 +258,11 @@ class App extends Component {
             <div style={{ width: '80%', margin: '0 auto', fontFamily: 'inherit' }}>
               <h3 style={{ fontFamily: 'inherit', textAlign: 'center' }}>انتخاب مدل</h3>
               <select className="mselect2" id='si2' name="state" style={{ width: '100%' }}>
-                <option value="AL">سمند سورن</option>
-                <option value="WY">پارس </option>
-                <option value="OH">Ohio</option>
-                <option value="HA">Hamilton</option>
+                <option value="soren">سمند سورن</option>
+                <option value="pars">پارس </option>
+                <option value="pars">دنا</option>
+                <option value="206">206</option>
+                <option value="207">207</option>
               </select>
             </div>
           </div>
@@ -265,14 +270,138 @@ class App extends Component {
             <div style={{ width: '80%', margin: '0 auto' }}>
               <h3 style={{ fontFamily: 'inherit', textAlign: 'center' }}>انتخاب برند</h3>
               <select className="mselect2" id='si1' name="state" style={{ width: '100%' }}>
-                <option value="AL">Alabama</option>
-                <option value="WY">Wyoming</option>
-                <option value="OH">Ohio</option>
-                <option value="HA">Hamilton</option>
+                <option value="AL">ایران خودرو</option>
+                <option value="WY">سایپا</option>
+                <option value="OH">تویوتا</option>
               </select>
             </div>
           </div>
         </div>
+
+
+        
+
+
+
+
+
+
+
+        <div className='row' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, padding: '0 10px' }}>
+          <div className="card col-md-3" style={{
+            width: "25%", minWidth: '300px',
+            boxShadow: 'rgb(125, 118, 118) -2px 2px 3px 0px', margin: '15px', padding: 0
+          }}>
+            <img className="card-img-top" src={require('./images/resource/dena.jpg')} alt="Card image cap"
+            />
+            <div className="card-body" style={{ padding: '15px 0' }}>
+              <h5 className="card-title" style={{ textAlign: 'center', fontFamily: 'inherit' }}>دنا</h5>
+
+              <div className='' style={{ margin: 0, textAlign: 'right', width: '100%', direction: 'rtl', }}>
+
+                <ul className='row' style={{ width: '100%', margin: '0 auto' }}>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="sm" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="sm" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="sm" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="sm" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                </ul>
+
+                <hr />
+
+                <div class="col-12">
+                  <button
+                    type="button" class="btn btn-outline-success"
+                    style={{ padding: '5px 70px', margin: '0 auto', display: 'block' }}
+                    onClick={ () => {     
+                      this.props.setCurrentModel('dena')
+                      this.props.history.push('/products');
+                    }}
+                    >
+                    انتخاب
+                </button>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <div className="card col-md-3" style={{ width: "25%", minWidth: '300px', boxShadow: 'rgb(125, 118, 118) -2px 2px 3px 0px', padding: 0 }}>
+            <img className="card-img-top" src={require('./images/resource/pack_dena.jpg')} alt="Card image cap"
+            />
+            <div className="card-body" style={{ padding: '15px 0' }}>
+              <h5 className="card-title" style={{ textAlign: 'center', fontFamily: 'inherit' }}>بسته پیشنهادی</h5>
+
+              <div className='' style={{ margin: 0, textAlign: 'right', width: '100%', direction: 'rtl', }}>
+
+                <ul className='row' style={{ width: '100%', margin: '0 auto' }}>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="md" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="md" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="md" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                  <li className='col-sm-6 col-xs-12 ' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, marginBottom: '10px' }}>
+                    <span><FontAwesomeIcon icon={faWrench} size="md" color={'#333'}
+                      style={{ fontSize: '0.8rem', }} /></span>
+                    <span style={{ paddingLeft: '10px', fontSize: '0.8rem' }}><b>حجم موتور</b></span>
+                    <span style={{ direction: 'ltr' }}>1645 cc</span>
+                  </li>
+                </ul>
+
+                <h5 className="card-title" style={{ textAlign: 'center', fontFamily: 'inherit' }}>125,000 تومان</h5>
+                <hr />
+
+                <div class="col-12">
+                  <button
+                    type="button" class="btn btn-outline-success"
+                    style={{ padding: '5px 70px', margin: '0 auto', display: 'block' }}>
+                    انتخاب
+                </button>
+                </div>
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
 
 
         {/* <!-- Statistics Numbers  --> */}
@@ -385,4 +514,13 @@ class App extends Component {
   }
 }
 
-export default App;
+// const mapStateToProps = (state) => ({
+//   cartItems: state.cart.cart,
+//   cartPrice: state.cart.cartPrice,
+//   cartDiscount: state.cart.cartDiscount
+// })
+
+const mapDispatchToProps = {
+  setCurrentModel,
+}
+export default connect(null, mapDispatchToProps)(App);

@@ -22,7 +22,7 @@ import { Provider } from 'react-redux';
 import ProductsPage from './components/Products';
 import SingleCategoryPage from './components/SingleCategoryPage';
 import ContactUs from './components/ContactUs';
-
+import Checkout from './components/Checkout';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,11 +32,11 @@ ReactDOM.render(
           <Layout>
             <Switch>
               <Route path="/" exact={true} component={App} />
-              <Route path="/products"  component={ProductsPage} />
+              <Route path="/products"  exact={true} component={ProductsPage} />
               <Route path='/contactus'  component={ContactUs} />
               {/* <Route path='/categories/:catID?' exact={true} component={CategoryPage} /> */}
-              {/* <Route path='/checkout' component={Checkout} /> */}
-              <Route path='/products/category/:catID'  exact={true} component={SingleCategoryPage}/>
+              <Route path='/checkout' component={Checkout} />
+              <Route path='/products/category/:catID'  component={SingleCategoryPage}/>
               {/* <Redirect to="/products" from='/products/category/:catID' />               */}
               <Redirect to="/" />
             </Switch>

@@ -25,7 +25,8 @@ class SingleCategoryPage extends Component {
         super(props);
         this.state = {
             showProductModal: false,
-            selectedProduct: null
+            selectedProduct: null,
+            showOnly_InStock: false
         }
     }
 

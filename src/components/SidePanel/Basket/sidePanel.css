@@ -15,7 +15,7 @@
 }
 
 .backSidePanel{
-    z-index: 400;
+    z-index: 9999;
     opacity: 0;
     width: 0;
     transition: opacity .5s;

@@ -6,8 +6,9 @@ import { setTextForToast } from '../../iRedux/Actions/common';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    faAngleLeft
+    faAngleLeft, faFilter
 } from '@fortawesome/free-solid-svg-icons'
+
 
 import ProductBox from './ProductBox';
 
@@ -35,7 +36,8 @@ class ProductPage extends Component {
         super(props);
         this.state = {
             showProductModal: false,
-            selectedProduct: null
+            selectedProduct: null,
+            filterBy_currentModel: false
         }
     }
 
@@ -132,6 +134,11 @@ class ProductPage extends Component {
         this.props.loadData(DataTypes.PRODUCTS);// load data 4 category
         this.props.loadData(DataTypes.CATEGORIES);
 
+        if (this.props.currentModel.length !== 0) {
+            this.setState({ filterBy_currentModel: true });
+        }
+
+
     }// end componentDidMount
 
 
@@ -147,17 +154,38 @@ class ProductPage extends Component {
     handlePreloader() {
         $('.preloader').fadeIn(2);
         if ($('.preloader').length) {
-          $('.preloader').delay(700).fadeOut(500);
+            $('.preloader').delay(700).fadeOut(500);
         }
-      }
+    }
 
     render() {
+
+
+        const styleRoundSelectorActive = {
+            backgroundColor: '#309342',
+            width: '2.5rem',
+            height: '1.2rem',
+            borderRadius: '1rem',
+            padding: '0.5rem',
+            position: 'relative',
+            cursor: 'pointer'
+        };
+
+        const styleRoundSelectorPassive = {
+            backgroundColor: '#989898',
+            width: '2.5rem',
+            height: '1.2rem',
+            borderRadius: '1rem',
+            padding: '0.5rem',
+            position: 'relative',
+            cursor: 'pointer'
+        };
 
 
         return (
             <>
                 <div>
-                <div className='preloader'></div>
+                    <div className='preloader'></div>
 
                     <Header />
 
@@ -169,7 +197,7 @@ class ProductPage extends Component {
                                 <div className="form-check radioWrapperTopCat">
                                     <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
                                     <label className="form-check-label" for="exampleRadios1">
-                                    همه موارد
+                                        همه موارد
                                     </label>
                                 </div>
                             </div>
@@ -177,7 +205,7 @@ class ProductPage extends Component {
                                 <div className="form-check radioWrapperTopCat">
                                     <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios2" value="option1" />
                                     <label className="form-check-label" for="exampleRadios2">
-                                       تعویض روغن
+                                        تعویض روغن
                                     </label>
                                 </div>
                             </div>
@@ -209,7 +237,7 @@ class ProductPage extends Component {
                                 <div className="form-check radioWrapperTopCat">
                                     <input className="form-check-input radioTopCat" type="radio" name="exampleRadios" id="exampleRadios6" value="option1" />
                                     <label className="form-check-label" for="exampleRadios6">
-                                       ضدیخ
+                                        ضدیخ
                                     </label>
                                 </div>
                             </div>
@@ -218,9 +246,40 @@ class ProductPage extends Component {
 
 
 
+                        <div className='' style={{ display: 'flex', justifyContent: 'center'}}>
+                            
+                            <div className='' style={{
+                                direction: 'rtl',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'space-around',
+                                border: '1px solid',
+                                borderRadius:'10px',
+                                padding:'20px 10px',
+                                width: '50%', minWidth: '450px' 
+                                
+                            }}>
+                                <FontAwesomeIcon icon={faFilter} size="lg" style={{ color: '#007bFF', }} />
+                                <h5 style={{ fontFamily: 'IRANSans'}}>فیلتر مطابق مدل خودرو انتخابی</h5>
+                                <div style={this.state.filterBy_currentModel ? styleRoundSelectorActive : styleRoundSelectorPassive}
+                                    onClick={() => this.setState({ filterBy_currentModel: !this.state.filterBy_currentModel })}
+                                ><span style={Object.assign({
+                                    backgroundColor: '#FFF',
+                                    width: '0.6rem',
+                                    height: '0.6rem',
+                                    borderRadius: '50%',
+                                    position: 'absolute',
+                                    top: '0.3rem',
+                                }, this.state.filterBy_currentModel ? { right: '0.3rem' } : { left: '0.3rem' })}></span>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </section>
+
+
 
                     <section style={{
                         boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
@@ -315,7 +374,8 @@ class ProductPage extends Component {
 
 
 const mapStateToProps = (store) => ({
-    products: store.shop.products
+    products: store.shop.products,
+    currentModel: store.common.currentModel
 })
 
 const mapDispatchToProps = {
