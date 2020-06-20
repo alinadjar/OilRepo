@@ -1,7 +1,8 @@
 import {
     toggleLOADING, showBasketSidePanel, SET_TXT_4_TOAST,
     SET_CURRENT_CATEGORY, SET_CURRENT_MODEL,
-    Show_Filtering_Panel, Show_Sorting_Panel
+    Show_Filtering_Panel, Show_Sorting_Panel,
+    FILTER_By_CURRENT_MODEL
 } from '../Actions/types';
 
 
@@ -14,6 +15,7 @@ const initialState = {
     currentCategory: -1,
     showPanelFiltering: false,
     showPanelSorting: false,
+    filter_by_selectedModel: false
 }
 
 export default function (state = initialState, action) {
@@ -53,6 +55,11 @@ export default function (state = initialState, action) {
                 ...state,
                 currentCategory: action.payload
             }
+            case FILTER_By_CURRENT_MODEL:
+                return {
+                    ...state,
+                    filter_by_selectedModel: action.payload
+                }
         default:
             return state;
     }

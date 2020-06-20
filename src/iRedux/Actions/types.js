@@ -29,3 +29,6 @@ export const SET_TXT_4_TOAST = 'SET_TXT_4_TOAST';
 // set current model and category
 export const SET_CURRENT_MODEL = 'SET_CURRENT_MODEL';
 export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
+
+
+export const FILTER_By_CURRENT_MODEL = 'FILTER_By_CURRENT_MODEL';

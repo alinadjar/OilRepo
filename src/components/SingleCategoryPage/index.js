@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../iRedux/Actions/cart_Actions';
 import {
     setTextForToast, setCurrentCategory,
-    toggleFilteringSidePanel, toggleSortingSidePanel
+    toggleFilteringSidePanel, toggleSortingSidePanel, setFilterByCurrentModel
 } from '../../iRedux/Actions/common';
 import { loadData } from '../../iRedux/Actions/shop_Actions';
 import { DataTypes } from '../../iRedux/Actions/types';
@@ -26,7 +26,8 @@ class SingleCategoryPage extends Component {
         this.state = {
             showProductModal: false,
             selectedProduct: null,
-            showOnly_InStock: false
+            showOnly_InStock: false,
+            filterBycurrentModel: false
         }
     }
 
@@ -55,11 +56,31 @@ class SingleCategoryPage extends Component {
         this.setState({ showProductModal: false, selectedProduct: null });
     }
 
+    // componentWillReceiveProps(nextProps) {
+    //     debugger;
+    //     if (nextProps.filter_by_selectedModel !== this.state.filterBycurrentModel) {
+    //         this.setState({ filterBycurrentModel: nextProps.filter_by_selectedModel });
+    //     }
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        debugger
+        if( nextProps.filter_by_selectedModel !== prevState.filterBycurrentModel){
+            return { filterBycurrentModel: nextProps.filter_by_selectedModel };
+        }
+        else {
+            return null;
+        }        
+    }
+
 
     render() {
         const catID = this.props.match.params.catID;
         const subcatID = this.props.match.params.subcatID;
         // debugger
+
+        
+
 
         const styleRoundSelectorActive = {
             backgroundColor: '#309342',
@@ -87,6 +108,36 @@ class SingleCategoryPage extends Component {
 
                 <Header />
                 <div style={{ marginTop: '160px', backgroundColor: '#F8F9FA' }}>
+                    <div className='' style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+
+                        <div className='' style={{
+                            direction: 'rtl',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-around',
+                            border: '1px solid',
+                            borderRadius: '10px',
+                            padding: '20px 10px',
+                            width: '50%', minWidth: '450px'
+
+                        }}>
+                            <FontAwesomeIcon icon={faFilter} size="lg" style={{ color: '#007bFF', }} />
+                            <h5 style={{ fontFamily: 'IRANSans' }}>فیلتر مطابق مدل خودرو انتخابی</h5>
+                            <div style={this.state.filterBycurrentModel ? styleRoundSelectorActive : styleRoundSelectorPassive}
+                                onClick={() => this.props.setFilterByCurrentModel(!this.state.filterBycurrentModel)
+                                     }
+                            ><span style={Object.assign({
+                                backgroundColor: '#FFF',
+                                width: '0.6rem',
+                                height: '0.6rem',
+                                borderRadius: '50%',
+                                position: 'absolute',
+                                top: '0.3rem',
+                            }, this.state.filterBycurrentModel ? { right: '0.3rem' } : { left: '0.3rem' })}></span>
+                            </div>
+                        </div>
+                    </div>
                     <div className='d-lg-none d-block'>
                         <div className='row' style={{ fontFamily: 'IRANSans' }}>
                             <div className='col-6'>
@@ -160,7 +211,8 @@ class SingleCategoryPage extends Component {
 }
 
 const mapStateToProps = (store) => ({
-    products: store.shop.products
+    products: store.shop.products,
+    filter_by_selectedModel: store.common.filter_by_selectedModel
 })
 
 const mapDispatchToProps = {
@@ -169,7 +221,8 @@ const mapDispatchToProps = {
     loadData,
     setCurrentCategory,
     toggleFilteringSidePanel,
-    toggleSortingSidePanel
+    toggleSortingSidePanel,
+    setFilterByCurrentModel
 }
 
 
