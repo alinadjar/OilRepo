@@ -6,6 +6,8 @@ export const DataTypes = {
 
 // common reducer
 export const toggleLOADING = "toggleLOADING";
+export const loading_Hide = 'loading_Hide';
+export const loading_Show = 'loading_Show';
 export const showBasketSidePanel = "showBasketSidePanel";
 export const Show_Filtering_Panel = 'Show_Filtering_Panel';
 export const Show_Sorting_Panel = 'Show_Sorting_Panel';
@@ -32,3 +34,6 @@ export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
 
 
 export const FILTER_By_CURRENT_MODEL = 'FILTER_By_CURRENT_MODEL';
+
+
+export const WRITE_PRODUCTS_INTO_REPO = 'WRITE_PRODUCTS_INTO_REPO';

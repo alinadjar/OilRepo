@@ -31,13 +31,13 @@ class ProductBox extends Component {
                         <button style={{  }}
                             onClick={(e) => {
                                 e.stopPropagation();
-                                if (p.availableInStock) {
+                                if (p.AvailableInStock) {
                                     this.props.add2Cart(p);
-                                    this.props.writeToastText(`${p.title} به سبد خرید اضافه شد`);
+                                    this.props.writeToastText(`${p.Title} به سبد خرید اضافه شد`);
                                     toastr.success('+', toastrOptions);
                                 }
                                 else {
-                                    this.props.writeToastText(`${p.title} موجود نمیباشد`);
+                                    this.props.writeToastText(`${p.Title} موجود نمیباشد`);
                                     toastr.error('+', toastrOptions);
                                 }
                             }}
@@ -47,10 +47,11 @@ class ProductBox extends Component {
                     </span>
                     <div style={{ textDecoration: 'none', }}>
                         <div>
-                            <img src={require(`../../images/products/${p.images[0].imageSrc}`)} className='img-responsive' alt='some txt' />
-                            <span className='spanDiscount'>تخفیف {p.discountRatio} %</span>
+                            {/* <img src={require(`../../images/products/${p.PicName}`)} className='img-responsive' alt='some txt' /> */}
+                            <img src={require(`../../images/products/7.jpg`)} className='img-responsive' alt='some txt' />
+                            <span className='spanDiscount'>تخفیف {(p.Discount/p.Price)*100} %</span>
                             {
-                                ! p.availableInStock &&
+                                ! p.AvailableInStock &&
                                 <img src={require('../../images/soldout.png')} alt='some txt' style={{ width: '100%', height: '100px', position: 'absolute', top: '20%', left: 0 }} />
                             }
                         </div>
@@ -59,11 +60,11 @@ class ProductBox extends Component {
                                 <span style={{
                                     fontFamily: 'inherit',
                                     lineHeight: 1.5
-                                }}>{p.price - p.discount} تومان</span>
-                                {parseInt(p.discountRatio) > 0 && <small>{p.price}</small>}
+                                }}>{p.Price - p.Discount} تومان</span>
+                                {parseInt(p.Discount/p.Price)*100 > 0 && <small>{p.Price}</small>}
                                 {/* <small>11,875</small> */}
                             </b>
-                            <h4 style={{fontFamily: 'IRANSans'}}>{p.title}</h4>
+                            <h4 style={{fontFamily: 'IRANSans'}}>{p.Title}</h4>
                         </div>
                     </div>
                 </div>

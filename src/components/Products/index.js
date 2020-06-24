@@ -26,6 +26,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 import { loadData } from '../../iRedux/Actions/shop_Actions';
+import { loadProductData } from '../../iRedux/Actions/Repo_Actions';
 import { DataTypes } from '../../iRedux/Actions/types';
 
 const $ = window.$;
@@ -50,8 +51,10 @@ class ProductPage extends Component {
         this.alignCarousels();
 
 
-        this.props.loadData(DataTypes.PRODUCTS);// load data 4 category
-        this.props.loadData(DataTypes.CATEGORIES);
+        // this.props.loadData(DataTypes.PRODUCTS);// load data 4 category
+        // this.props.loadData(DataTypes.CATEGORIES);
+
+        this.props.loadProductData(1, 5, 0);
 
         if (this.props.currentModel && this.props.currentModel !== -1) {
             this.setState({ filterBy_currentModel: true });
@@ -168,13 +171,22 @@ class ProductPage extends Component {
 
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        debugger
-        if( nextProps.filter_by_selectedModel !== prevState.filterBy_currentModel){
+        // debugger
+        if (nextProps.filter_by_selectedModel !== prevState.filterBy_currentModel) {
             return { filterBy_currentModel: nextProps.filter_by_selectedModel };
         }
         else {
             return null;
-        }        
+        }
+    }
+
+
+
+    print(dict) {
+        console.log('=========DIC===========');
+        console.log(dict[3]);
+        console.log("3" in dict);
+        console.log(3 in dict);
     }
 
     render() {
@@ -299,7 +311,7 @@ class ProductPage extends Component {
                                 <FontAwesomeIcon icon={faFilter} size="lg" style={{ color: '#007bFF', }} />
                                 <h5 style={{ fontFamily: 'IRANSans' }}>فیلتر مطابق مدل خودرو انتخابی</h5>
                                 <div style={this.state.filterBy_currentModel ? styleRoundSelectorActive : styleRoundSelectorPassive}
-                                    onClick={() =>  this.props.setFilterByCurrentModel(!this.state.filterBy_currentModel) }
+                                    onClick={() => this.props.setFilterByCurrentModel(!this.state.filterBy_currentModel)}
                                 ><span style={Object.assign({
                                     backgroundColor: '#FFF',
                                     width: '0.6rem',
@@ -316,8 +328,9 @@ class ProductPage extends Component {
                     </section>
 
 
-                    {(this.state.active_service === 0 || this.state.active_service === 1) &&
+                    {(this.state.active_service === 0 || this.state.active_service === 1)  &&
                         <>
+                        {("1" in this.props.productss) && 
                             <section style={{
                                 boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                                 background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -331,16 +344,19 @@ class ProductPage extends Component {
                                 </div>
 
                                 <div className="myCarousel">
+                                    {/* { this.print(this.props.productss) } */}
                                     {
-                                        this.props.products != null &&
-                                        this.props.products.map(p =>
-                                            <div className="carousel-cell" key={p.id}>
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) &&
+                                        this.props.productss[1].list.map(p =>
+                                            <div className="carousel-cell" key={p.ProductID}>
                                                 <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                            </div>
-                                        )
+                                            </div>)
                                     }
                                 </div>
                             </section>
+    }
+    {("2" in this.props.productss) && 
                             <section style={{
                                 boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                                 background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -355,15 +371,17 @@ class ProductPage extends Component {
 
                                 <div className="myCarousel">
                                     {
-                                        this.props.products != null &&
-                                        this.props.products.map(p =>
-                                            <div className="carousel-cell" key={p.id}>
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) &&
+                                        this.props.productss[2].list.map(p =>
+                                            <div className="carousel-cell" key={p.ProductID}>
                                                 <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                            </div>
-                                        )
+                                            </div>)
                                     }
                                 </div>
                             </section>
+    }
+    {("3" in this.props.productss) && 
                             <section style={{
                                 boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                                 background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -378,15 +396,17 @@ class ProductPage extends Component {
 
                                 <div className="myCarousel">
                                     {
-                                        this.props.products != null &&
-                                        this.props.products.map(p =>
-                                            <div className="carousel-cell" key={p.id}>
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) &&
+                                        this.props.productss[3].list.map(p =>
+                                            <div className="carousel-cell" key={p.ProductID}>
                                                 <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                            </div>
-                                        )
+                                            </div>)
                                     }
                                 </div>
                             </section>
+    }
+    {("4" in this.props.productss) && 
                             <section style={{
                                 boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                                 background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -401,15 +421,17 @@ class ProductPage extends Component {
 
                                 <div className="myCarousel">
                                     {
-                                        this.props.products != null &&
-                                        this.props.products.map(p =>
-                                            <div className="carousel-cell" key={p.id}>
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) &&
+                                        this.props.productss[4].list.map(p =>
+                                            <div className="carousel-cell" key={p.ProductID}>
                                                 <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                            </div>
-                                        )
+                                            </div>)
                                     }
                                 </div>
                             </section>
+    }
+    {("5" in this.props.productss) && 
                             <section style={{
                                 boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                                 background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -424,15 +446,17 @@ class ProductPage extends Component {
 
                                 <div className="myCarousel">
                                     {
-                                        this.props.products != null &&
-                                        this.props.products.map(p =>
-                                            <div className="carousel-cell" key={p.id}>
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) &&
+                                        this.props.productss[5].list.map(p =>
+                                            <div className="carousel-cell" key={p.ProductID}>
                                                 <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                            </div>
-                                        )
+                                            </div>)
                                     }
                                 </div>
                             </section>
+    }
+    {("6" in this.props.productss) && 
                             <section style={{
                                 boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                                 background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -447,15 +471,16 @@ class ProductPage extends Component {
 
                                 <div className="myCarousel">
                                     {
-                                        this.props.products != null &&
-                                        this.props.products.map(p =>
-                                            <div className="carousel-cell" key={p.id}>
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) &&
+                                        this.props.productss[6].list.map(p =>
+                                            <div className="carousel-cell" key={p.ProductID}>
                                                 <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                            </div>
-                                        )
+                                            </div>)
                                     }
                                 </div>
                             </section>
+    }
                         </>
                     }
 
@@ -464,6 +489,8 @@ class ProductPage extends Component {
 
 
                     {(this.state.active_service === 0 || this.state.active_service === 2) &&
+                        
+                        ("7" in this.props.productss) && 
                         <section style={{
                             boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                             background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -478,20 +505,23 @@ class ProductPage extends Component {
 
                             <div className="myCarousel">
                                 {
-                                    this.props.products != null &&
-                                    this.props.products.map(p =>
-                                        <div className="carousel-cell" key={p.id}>
+                                    // this.props.productss.hasOwnProperty("1")
+                                    ("1" in this.props.productss) &&
+                                    this.props.productss[7].list.map(p =>
+                                        <div className="carousel-cell" key={p.ProductID}>
                                             <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                        </div>
-                                    )
+                                        </div>)
                                 }
                             </div>
                         </section>
+                        
                     }
 
 
 
                     {(this.state.active_service === 0 || this.state.active_service === 3) &&
+
+("8" in this.props.productss) && 
                         <section style={{
                             boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                             background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -505,20 +535,21 @@ class ProductPage extends Component {
                             </div>
 
                             <div className="myCarousel">
-                                {
-                                    this.props.products != null &&
-                                    this.props.products.map(p =>
-                                        <div className="carousel-cell" key={p.id}>
-                                            <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                        </div>
-                                    )
-                                }
+                            {
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) && 
+                                        this.props.productss[8].list.map(p => 
+                                            <div className="carousel-cell" key={p.ProductID}>
+                                                <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
+                                            </div>)
+                                    }
                             </div>
                         </section>
                     }
 
 
                     {(this.state.active_service === 0 || this.state.active_service === 4) &&
+                    ("9" in this.props.productss) && 
                         <section style={{
                             boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                             background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -532,14 +563,14 @@ class ProductPage extends Component {
                             </div>
 
                             <div className="myCarousel">
-                                {
-                                    this.props.products != null &&
-                                    this.props.products.map(p =>
-                                        <div className="carousel-cell" key={p.id}>
-                                            <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                        </div>
-                                    )
-                                }
+                            {
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) && 
+                                        this.props.productss[9].list.map(p => 
+                                            <div className="carousel-cell" key={p.ProductID}>
+                                                <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
+                                            </div>)
+                                    }
                             </div>
                         </section>
                     }
@@ -547,6 +578,7 @@ class ProductPage extends Component {
 
 
                     {(this.state.active_service === 0 || this.state.active_service === 5) &&
+                    ("10" in this.props.productss) && 
                         <section style={{
                             boxShadow: '0 8px 6px -6px rgba(68, 68, 68, 0.35)', margin: '40px auto 100px', padding: '5px', paddingBottom: '40px',
                             background: 'linear-gradient(25deg, rgb(167, 178, 196) 20%, rgb(255, 255, 255) 80%)',
@@ -560,14 +592,14 @@ class ProductPage extends Component {
                             </div>
 
                             <div className="myCarousel">
-                                {
-                                    this.props.products != null &&
-                                    this.props.products.map(p =>
-                                        <div className="carousel-cell" key={p.id}>
-                                            <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
-                                        </div>
-                                    )
-                                }
+                            {
+                                        // this.props.productss.hasOwnProperty("1")
+                                        ("1" in this.props.productss) && 
+                                        this.props.productss[10].list.map(p => 
+                                            <div className="carousel-cell" key={p.ProductID}>
+                                                <ProductBox product={p} add2Cart={this.props.addToCart} boxClick={this.boxClickHandler} writeToastText={this.props.setTextForToast} />
+                                            </div>)
+                                    }
                             </div>
                         </section>
                     }
@@ -594,6 +626,7 @@ class ProductPage extends Component {
 
 const mapStateToProps = (store) => ({
     products: store.shop.products,
+    productss: store.repo.products,
     currentModel: store.common.currentModel,
     filter_by_selectedModel: store.common.filter_by_selectedModel
 })
@@ -602,7 +635,8 @@ const mapDispatchToProps = {
     addToCart,
     setTextForToast,
     loadData,
-    setFilterByCurrentModel
+    setFilterByCurrentModel,
+    loadProductData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

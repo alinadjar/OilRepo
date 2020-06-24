@@ -3,12 +3,25 @@ import {
     toggleLOADING, showBasketSidePanel, SET_TXT_4_TOAST,
     SET_CURRENT_CATEGORY, SET_CURRENT_MODEL,
     Show_Filtering_Panel, Show_Sorting_Panel,
-    FILTER_By_CURRENT_MODEL
+    FILTER_By_CURRENT_MODEL,
+    loading_Show, loading_Hide
 } from './types';
 
+//---------------------------------------------
 export const toggleLoadingState = () => ({
     type: toggleLOADING
 })
+
+
+export const loadingShow = () => ({
+    type: loading_Show
+})
+
+export const loadingHide = () => ({
+    type: loading_Hide
+})
+
+//---------------------------------------------
 
 export const toggleBasketSidePanel = () => ({
     type: showBasketSidePanel

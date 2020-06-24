@@ -12,6 +12,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage 
 
 import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
+import RepositoryReducer from './Reducers/Repo_Reducer';
 //-----------------------Middlewares 
 // import { RestMiddleware4Post } from '../webService/RestMiddleware';
 const middleware = [
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     common: commonReducer,
     cart: cartReducer,
     shop: shopReducer,
+    repo: RepositoryReducer,
     toastr: toastrReducer // <- Mounted at toastr.
 });
 

@@ -2,7 +2,8 @@ import {
     toggleLOADING, showBasketSidePanel, SET_TXT_4_TOAST,
     SET_CURRENT_CATEGORY, SET_CURRENT_MODEL,
     Show_Filtering_Panel, Show_Sorting_Panel,
-    FILTER_By_CURRENT_MODEL
+    FILTER_By_CURRENT_MODEL,
+    loading_Hide, loading_Show
 } from '../Actions/types';
 
 
@@ -24,6 +25,16 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 loading: !state.loading
+            }
+        case loading_Show:
+            return {
+                ...state,
+                loading: true
+            }
+        case loading_Hide:
+            return {
+                ...state,
+                loading: false
             }
         case showBasketSidePanel:
             return {
@@ -55,11 +66,11 @@ export default function (state = initialState, action) {
                 ...state,
                 currentCategory: action.payload
             }
-            case FILTER_By_CURRENT_MODEL:
-                return {
-                    ...state,
-                    filter_by_selectedModel: action.payload
-                }
+        case FILTER_By_CURRENT_MODEL:
+            return {
+                ...state,
+                filter_by_selectedModel: action.payload
+            }
         default:
             return state;
     }
